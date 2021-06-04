@@ -83,13 +83,17 @@ data:
       {{- include "nats.tlsConfig" $cluster_tls | nindent 6}}
       {{- end }}
 
-      {{- with .Values.cluster.users }}
+      {{- if .Values.cluster.authorization }}
       authorization {
-        users: [
-        {{- range . }}
-        {{- toRawJson . | nindent 10 }},
+        {{- with .Values.cluster.authorization.user }}
+        user: {{ . }}
         {{- end }}
-        ]
+        {{- with .Values.cluster.authorization.password }}
+        password: {{ . }}
+        {{- end }}
+        {{- with .Values.cluster.authorization.timeout }}
+        timeout: {{ . }}
+        {{- end }}
       }
       {{- end }}
 
