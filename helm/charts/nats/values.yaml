@@ -164,10 +164,19 @@ cluster:
 # https://docs.nats.io/nats-server/configuration/leafnodes
 #
 leafnodes:
-  enabled: false
+  enabled: true
   noAdvertise: false
   # remotes:
   #   - url: "tls://connect.ngs.global:7422"
+
+  # authorization:
+  #   users:
+  #   - user: leaf1
+  #     password: secret
+  #     account: account1
+  #   - user: leaf2
+  #     password: secret
+  #     account: account2
 
   #######################
   #                     #

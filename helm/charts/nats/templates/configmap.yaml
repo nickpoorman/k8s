@@ -139,6 +139,16 @@ data:
       {{- include "nats.tlsConfig" $leafnode_tls | nindent 6}}
       {{- end }}
 
+      {{- with .Values.leafnodes.authorization.users }}
+      authorization {
+        users: [
+        {{- range . }}
+        {{- toRawJson . | nindent 10 }},
+        {{- end }}
+        ]
+      }
+      {{- end }}
+
       remotes: [
       {{- range .Values.leafnodes.remotes }}
       {
