@@ -139,7 +139,8 @@ data:
       {{- include "nats.tlsConfig" $leafnode_tls | nindent 6}}
       {{- end }}
 
-      {{- with .Values.leafnodes.authorization.users }}
+      {{- with .Values.leafnodes.authorization }}
+      {{- with .users }}
       authorization {
         users: [
         {{- range . }}
@@ -147,6 +148,7 @@ data:
         {{- end }}
         ]
       }
+      {{- end }}
       {{- end }}
 
       remotes: [
