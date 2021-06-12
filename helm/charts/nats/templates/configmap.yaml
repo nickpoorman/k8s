@@ -219,6 +219,23 @@ data:
           {{- with .urls }}
           urls: [{{ join "," . }}]
           {{- end }}
+
+          {{- with .tls }}
+          {{ $secretName := .secret.name }}
+          tls: {
+            {{- with .cert }}
+            cert_file: /etc/nats-certs/gateways/{{ $secretName }}/{{ . }}
+            {{- end }}
+
+            {{- with .key }}
+            key_file: /etc/nats-certs/gateways/{{ $secretName }}/{{ . }}
+            {{- end }}
+
+            {{- with .ca }}
+            ca_file: /etc/nats-certs/gateways/{{ $secretName }}/{{ . }}
+            {{- end }}
+          }
+          {{- end }}
         },
         {{- end }}
       ]
