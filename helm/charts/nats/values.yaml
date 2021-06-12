@@ -164,7 +164,7 @@ cluster:
 # https://docs.nats.io/nats-server/configuration/leafnodes
 #
 leafnodes:
-  enabled: true
+  enabled: false
   noAdvertise: false
   # remotes:
   #   - url: "tls://connect.ngs.global:7422"
